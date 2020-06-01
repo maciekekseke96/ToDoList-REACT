@@ -21,6 +21,11 @@ export default function FormElements(props){
         event.target.previousElementSibling.previousElementSibling.previousElementSibling.value = "";
 
     };
+    const removeTask = (event,index) => {
+        event.preventDefault();
+        let filteredTasks = tasks.filter((task,i)=> i!==index);
+        setTasks(filteredTasks);
+    };
         return (
             <>
             <form action="#">
@@ -30,7 +35,7 @@ export default function FormElements(props){
                 <button onClick={(event) => addTask(event)} className={"addTaskBtn"}>Add Task To List</button>
             </form>
             <ul>
-                {tasks.map((task,index)=> <ListElement key={index} task={task.title} priority={task.priority} />)}
+                {tasks.map((task,index)=> <ListElement onDelete={removeTask} id={index} key={index} task={task.title} priority={task.priority} />)}
             </ul>
             </>
         )
@@ -41,7 +46,7 @@ function ListElement(props) {
     return (
         <li>{props.task}
         <p>Task priority: {props.priority}</p>
-        <button>Delete Task</button>
+        <button onClick={(event) => props.onDelete(event,props.id)}>Delete Task</button>
         </li>
     )
 
