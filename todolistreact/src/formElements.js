@@ -27,17 +27,18 @@ export default function FormElements(props){
         setTasks(filteredTasks);
     };
         return (
-            <>
-            <form action="#">
+            <div className={"mainContent"}>
+            <form className={"mainForm"} action="#">
+                <h4>Task Name</h4>
                 <input onChange={(event) => handleChangeTask(event)} className={"taskName"} type="text" placeholder={"Task Content"}/>
-                <span >Priority: </span>
-                <input onChange={(event) => handleChangePriority(event)} className={"taskPriority"} type="number" min={1} max={10}/>
+                <h6 >Priority: </h6>
+                <input onChange={(event) => handleChangePriority(event)} className={"taskPriority"} placeholder={"(1-10)"} type="number" min={1} max={10}/>
                 <button onClick={(event) => addTask(event)} className={"addTaskBtn"}>Add Task To List</button>
             </form>
-            <ul>
+            <ul className={"tasksList"}>
                 {tasks.map((task,index)=> <ListElement onDelete={removeTask} id={index} key={index} task={task.title} priority={task.priority} />)}
             </ul>
-            </>
+            </div>
         )
 }
 
