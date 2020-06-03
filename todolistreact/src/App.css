@@ -47,6 +47,7 @@
 .tasksList {
     border: 1px solid black;
     width: 50%;
+    position: relative;
 }
 .tasksList li{
     list-style-type: none;
@@ -57,7 +58,26 @@
     background-color: yellow;
     font-family: 'Raleway', sans-serif;
 }
+.tasksList li button:hover{
+    cursor: pointer;
+    transform: scale(1.15);
+}
 
 .tasksList li *{
     margin: 0.8rem;
+}
+
+.descSortBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 10rem;
+    height: 2.5rem;
+    background-color: yellow;
+    font-family: 'Raleway', sans-serif;
+}
+.descSortBtn:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+    font-weight: 700;
 }

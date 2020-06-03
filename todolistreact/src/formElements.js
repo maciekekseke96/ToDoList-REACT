@@ -31,6 +31,14 @@ export default function FormElements(props){
         let filteredTasks = tasks.filter((task,i)=> i!==index);
         setTasks(filteredTasks);
     };
+    const sortDesc = (event) => {
+        event.preventDefault();
+        let sortedTask = [...tasks];
+        sortedTask.sort(function (a,b) {
+            return b.priority - a.priority
+        });
+        setTasks(sortedTask)
+    };
         return (
             <div className={"mainContent"}>
             <form className={"mainForm"} action="#">
@@ -42,6 +50,7 @@ export default function FormElements(props){
             </form>
             <ul className={"tasksList"}>
                 {tasks.map((task,index)=> <ListElement onDelete={removeTask} id={index} key={index} task={task.title} priority={task.priority} />)}
+                <button onClick={(event) => sortDesc(event)} className={"descSortBtn"}>Sort Descending<br/> by priority</button>
             </ul>
             </div>
         )
