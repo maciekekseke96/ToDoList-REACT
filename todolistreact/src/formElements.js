@@ -13,12 +13,17 @@ export default function FormElements(props){
         setTaskPriority(event.target.value)
     };
     const addTask = (event) => {
-        event.preventDefault();
-        setTasks([...tasks, {title: taskValue, priority: taskPriority}]);
-        setTaskValue("");
-        setTaskPriority(1);
-        event.target.previousElementSibling.value = "";
-        event.target.previousElementSibling.previousElementSibling.previousElementSibling.value = "";
+        if (taskValue.length!==0 && taskPriority>0 && taskPriority<11) {
+            event.preventDefault();
+            setTasks([...tasks, {title: taskValue, priority: taskPriority}]);
+            setTaskValue("");
+            setTaskPriority(1);
+            event.target.previousElementSibling.value = "";
+            event.target.previousElementSibling.previousElementSibling.previousElementSibling.value = "";
+        }
+        else {
+            alert("Please check your task's content or priority. Content should not be empty and priority should be between 1 and 10")
+        }
 
     };
     const removeTask = (event,index) => {
