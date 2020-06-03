@@ -45,7 +45,8 @@ export default function FormElements(props){
 function ListElement(props) {
 
     return (
-        <li>{props.task}
+        <li>
+            <h2>{props.task}</h2>
         <p>Task priority: {props.priority}</p>
         <button onClick={(event) => props.onDelete(event,props.id)}>Delete Task</button>
         </li>
